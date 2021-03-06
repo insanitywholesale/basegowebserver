@@ -1,15 +1,15 @@
 package main
 
 import (
-	"net/http"
 	"embed"
+	"log"
+	"net/http"
 )
 
-//go:embed public/*
-
+////go:embed index.html favicon.ico robots.txt *.css
 var content embed.FS
 
 func main() {
-	http.HandleFunc("/", http.FileServer(content))
-	http.ListenAndServe(":1789", nil)
+	http.Handle("/", http.FileServer(http.FS(content)))
+	log.Fatal(http.ListenAndServe(":11789", nil))
 }
