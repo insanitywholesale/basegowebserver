@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-////go:embed index.html favicon.ico robots.txt *.css
+//go:embed index.html favicon.ico robots.txt *.css
 var content embed.FS
 
 func main() {
