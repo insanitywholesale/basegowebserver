@@ -3,13 +3,18 @@ package main
 import (
 	"embed"
 	"log"
+	"io/fs"
 	"net/http"
 )
 
-//go:embed index.html favicon.ico robots.txt *.css
+//go:embed public
 var content embed.FS
 
 func main() {
-	http.Handle("/", http.FileServer(http.FS(content)))
+	fsys, err := fs.Sub(content, "public")
+	if err != nil {
+		log.Fatal(err)
+	}
+	http.Handle("/", http.FileServer(http.FS(fsys)))
 	log.Fatal(http.ListenAndServe(":11789", nil))
 }
