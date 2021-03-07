@@ -1,5 +1,5 @@
 # build stage
-FROM golang:latest as build
+FROM golang:1.16 as build
 WORKDIR /go/src/basegowebserver
 COPY . .
 ENV CGO_ENABLED 0
