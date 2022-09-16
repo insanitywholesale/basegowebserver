@@ -2,8 +2,8 @@ package main
 
 import (
 	"embed"
-	"log"
 	"io/fs"
+	"log"
 	"net/http"
 )
 
